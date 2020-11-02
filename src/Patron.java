@@ -1,5 +1,3 @@
-import java.util.regex.Pattern;
-
 public class Patron {
     /**
      * data members of the class.
