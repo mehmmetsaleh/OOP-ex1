@@ -3,7 +3,7 @@ public class Library {
      * data members of the class
      */
     final int maxBooksNum;
-    final int maxPatronNum;
+    final int maxPatronsNum;
     final int maxBorrowedByPatron;
     int curBooksNum = 0;
     int curPatronsNum = 0;
@@ -21,9 +21,9 @@ public class Library {
     Library(int maxBookCapacity, int maxBorrowedBooks, int maxPatronCapacity) {
         maxBooksNum = maxBookCapacity;
         maxBorrowedByPatron = maxBorrowedBooks;
-        maxPatronNum = maxPatronCapacity;
+        maxPatronsNum = maxPatronCapacity;
         booksArray = new Book[maxBooksNum]; // null filled array of Books
-        patronsArray = new Patron[maxPatronNum]; // null filled array of Patrons
+        patronsArray = new Patron[maxPatronsNum]; // null filled array of Patrons
     }
 
     /**
@@ -34,12 +34,12 @@ public class Library {
      * or if the book was already in the library; a negative number otherwise.
      */
     int addBookToLibrary(Book book) {
-        if (curBooksNum < maxBooksNum) {
-            for (int i = 0; i < maxBooksNum; i++) {
-                if (booksArray[i] == book) {
-                    return i;
-                }
+        for (int i = 0; i < maxBooksNum; i++) {
+            if (booksArray[i] == book) {
+                return i;
             }
+        }
+        if (curBooksNum < maxBooksNum) {
             for (int i = 0; i < maxBooksNum; i++) {
                 if (booksArray[i] == null) {
                     booksArray[i] = book;
@@ -58,7 +58,7 @@ public class Library {
      * @return true if the given number is an id of some book in the library, false otherwise.
      */
     boolean isBookIdValid(int bookId) {
-        return bookId >= 0 && bookId < maxBooksNum;
+        return bookId >= 0 && bookId < maxBooksNum && booksArray[bookId] != null;
     }
 
     /**
@@ -83,7 +83,7 @@ public class Library {
      * @return true if the book with the given id is available, false otherwise.
      */
     boolean isBookAvailable(int bookId) {
-        return isBookIdValid(bookId) && booksArray[bookId] != null && booksArray[bookId].getCurrentBorrowerId() == -1;
+        return isBookIdValid(bookId) && booksArray[bookId].getCurrentBorrowerId() == -1;
     }
 
     /**
@@ -94,13 +94,13 @@ public class Library {
      * registered or if the patron was already registered. a negative number otherwise.
      */
     int registerPatronToLibrary(Patron patron) {
-        if (curPatronsNum < maxPatronNum) {
-            for (int i = 0; i < maxPatronNum; i++) {
-                if (patronsArray[i] == patron) {
-                    return i;
-                }
+        for (int i = 0; i < maxPatronsNum; i++) {
+            if (patronsArray[i] == patron) {
+                return i;
             }
-            for (int i = 0; i < maxPatronNum; i++) {
+        }
+        if (curPatronsNum < maxPatronsNum) {
+            for (int i = 0; i < maxPatronsNum; i++) {
                 if (patronsArray[i] == null) {
                     patronsArray[i] = patron;
                     curPatronsNum++;
@@ -118,7 +118,7 @@ public class Library {
      * @return true if the given number is an id of a patron in the library, false otherwise.
      */
     boolean isPatronIdValid(int patronId) {
-        return patronId >= 0 && patronId < maxPatronNum;
+        return patronId >= 0 && patronId < maxPatronsNum && patronsArray[patronId] != null;
     }
 
     /**
@@ -128,7 +128,7 @@ public class Library {
      * @return a non-negative id number of the given patron if he is registered to this library, -1 otherwise.
      */
     int getPatronId(Patron patron) {
-        for (int i = 0; i < maxPatronNum; i++) {
+        for (int i = 0; i < maxPatronsNum; i++) {
             if (patronsArray[i] == patron) {
                 return i;
             }
