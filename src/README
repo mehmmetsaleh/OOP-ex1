@@ -1,0 +1,15 @@
+mohammadsaleh
+
+
+
+=============================
+=      File description     =
+=============================
+Book.java - implementation of the Book class
+Library.java - implementation of the Library class
+Patron.java - implementation of the Patron class
+README - this file
+=============================
+=          Design           =
+=============================
+The exercise was designed following the given API in the java doc webpage.
