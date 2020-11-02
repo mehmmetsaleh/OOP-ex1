@@ -4,7 +4,6 @@ public class Patron {
     /**
      * data members of the class.
      */
-
     final String firstName;
     final String lastName;
     int comicVal;

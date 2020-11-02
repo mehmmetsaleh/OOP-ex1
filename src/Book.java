@@ -59,7 +59,6 @@ class Book {
         dramaticValue = bookDramaticValue;
         educationalValue = bookEducationalValue;
     }
-
     /*----=  Instance Methods  =-----*/
 
     /**
@@ -111,5 +110,4 @@ class Book {
         //your code goes here
         setBorrowerId(-1);
     }
-
 }

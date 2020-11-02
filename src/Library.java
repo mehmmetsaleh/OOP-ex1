@@ -51,7 +51,6 @@ public class Library {
         return -1;
     }
 
-
     /**
      * Returns true if the given number is an id of some book in the library, false otherwise.
      *
@@ -197,6 +196,4 @@ public class Library {
         }
         return null;
     }
-
-
 }
