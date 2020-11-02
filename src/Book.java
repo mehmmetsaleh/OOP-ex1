@@ -2,7 +2,6 @@
  * This class represents a book, which has a title, author, year of publication and different literary aspects.
  */
 class Book {
-   
    /** The title of this book. */
    final String title;
    
@@ -21,7 +20,7 @@ class Book {
    /** The educational value of this book. */
    int educationalValue;
    
-   /** The id of the current borrowe of this book. */
+   /** The id of the current borrower of this book. */
    int currentBorrowerId = -1;
 
    /*----=  Constructors  =-----*/
@@ -38,6 +37,12 @@ class Book {
    Book(String bookTitle, String bookAuthor, int bookYearOfPublication, int bookComicValue, int bookDramaticValue,
          int bookEducationalValue){
       //your code goes here
+      title = bookTitle;
+      author = bookAuthor;
+      yearOfPublication = bookYearOfPublication;
+      comicValue = bookComicValue;
+      dramaticValue = bookDramaticValue;
+      educationalValue = bookEducationalValue;
    }
 
    /*----=  Instance Methods  =-----*/
@@ -61,6 +66,7 @@ class Book {
     */
    int getLiteraryValue(){
       //your code goes here
+      return comicValue + dramaticValue + educationalValue ;
    }
    
    /**
@@ -70,6 +76,7 @@ class Book {
     */
    void setBorrowerId(int borrowerId){
       //your code goes here
+      currentBorrowerId = borrowerId;
    }
    
    /**
@@ -77,6 +84,7 @@ class Book {
     */
    int getCurrentBorrowerId(){
       //your code goes here
+      return currentBorrowerId;
    }
    
    /**
@@ -84,6 +92,7 @@ class Book {
     */
    void returnBook(){
       //your code goes here
+      setBorrowerId(-1);
    }
    
 }
